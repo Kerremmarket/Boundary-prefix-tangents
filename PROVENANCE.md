@@ -6,9 +6,10 @@ The underlying research code is drawn from scientific revision `f460994b7fe15495
 
 The theoretical examples, numerical kernels, calibrators, data extraction/cleaning/selection routines, experiment configurations, and numerical assertions are retained from the scientific baseline. `SOURCE_ORIGIN.json` records the original export hashes and identifies the files adapted for this release.
 
-Three runner files adapt checks that depended on private Git history or on redistributing frozen market inputs:
+Four runner/validator files adapt checks that depended on private Git history or on redistributing frozen market inputs:
 
 - `research/cliquet_feasibility/src/run_pilot.py`: replaces historical Git ancestry/tree checks with the public source manifest; accepts inputs verified against the local preparation record while retaining the original input hashes in the experiment configuration.
+- `research/cliquet_feasibility/src/validate_results.py`: checks input stability against the actual run record and the public source manifest rather than historical private Git trees; all numerical assertions remain unchanged.
 - `research/cliquet_integration/src/run_uncapped_audit.py`: checks the public source manifest and registered locally regenerated predecessor outputs in place of the old private tree/hash requirement.
 - `research/prefix_comparator_revision/src/run_experiments.py`: checks public source integrity and locally registered inputs/predecessor outputs instead of requiring descent from the original private Git commit.
 

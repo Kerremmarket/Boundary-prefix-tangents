@@ -45,7 +45,7 @@ The numerical output paths and the revised manuscript's reported comparisons are
 
 ## Provenance and interpretation
 
-The scientific baseline is source revision `f460994b7fe15495374c6bec7e3fa8aacb0eb69c` from the original research repository. That historical revision is not a commit in this public repository. Mathematical kernels and experiment configurations are preserved. Three runner integrity checks have been adapted for a fresh public checkout; see [PROVENANCE.md](PROVENANCE.md).
+The scientific baseline is source revision `f460994b7fe15495374c6bec7e3fa8aacb0eb69c` from the original research repository. That historical revision is not a commit in this public repository. Mathematical kernels and experiment configurations are preserved. Four runner/validator integrity checks have been adapted for a fresh public checkout; see [PROVENANCE.md](PROVENANCE.md).
 
 `SOURCE_MANIFEST.sha256` checks the public release files. `local-reproduction.json` records locally generated inputs and intermediate results. `input-comparison.json` reports whether the newly prepared cliquet inputs match the original frozen hashes. A different hash can reflect CSV serialization, numerical libraries, or a changed vendor snapshot; it is not silently labelled an exact reproduction. Output validators check the numerical identities and the paper's expected dispositions and will fail if those checks differ.
 

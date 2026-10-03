@@ -43,7 +43,7 @@
     },
     "research/cliquet_feasibility/src/validate_results.py": {
       "original_export_sha256": "36dc496d59fcd51e09cb9fcc200b915898d9161d12b769bd6910c73bcb104a3f",
-      "adapted": false
+      "adapted": true
     },
     "research/cliquet_feasibility/src/run_pilot.py": {
       "original_export_sha256": "6ce58b4a546058c83182ff37301bb92224c6de87b3089352314190e94d9fc940",

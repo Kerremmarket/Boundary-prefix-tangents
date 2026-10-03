@@ -86,6 +86,8 @@ def cliquet() -> None:
     paths = [f"{CLIQ}/src", f"{AUDIT}/src"]
     run(f"{CLIQ}/src/run_pilot.py", paths=paths)
     run(f"{CLIQ}/src/analyze_results.py", paths=paths)
+    run(f"{CLIQ}/src/validate_results.py", paths=paths)
+    run("-m", "pytest", "-q", f"{CLIQ}/tests/test_analysis.py", paths=paths)
     register_outputs("cliquet-pilot", CLIQ)
     run(f"{AUDIT}/src/run_uncapped_audit.py", paths=paths)
     run(f"{AUDIT}/src/run_refinement_audit.py", paths=paths)

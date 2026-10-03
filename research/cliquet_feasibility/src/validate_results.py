@@ -53,7 +53,7 @@ def run() -> None:
     validations.append(
         check(
             "input_hashes",
-            observed_hashes == config["input_hashes"],
+            observed_hashes == metadata["observed_input_hashes"],
             observed_hashes,
         )
     )
@@ -87,36 +87,11 @@ def run() -> None:
         )
     )
 
-    expected_trees = {
-        "paper": "3470516a7d8c73aa3e5691f01a98f4bc7e80329d",
-        "reproducibility": "cfb7e2337dac702e03b06638880da6b318e20daa",
-        "research/financial_extension": "22f5b10a71219f6c23a123e33b9574f768c20406",
-    }
-    observed_trees = {
-        path: subprocess.check_output(
-            ["git", "rev-parse", f"HEAD:{path}"], cwd=REPO, text=True
-        ).strip()
-        for path in expected_trees
-    }
-    protected_diff = subprocess.run(
-        [
-            "git",
-            "diff",
-            "--quiet",
-            config["base_commit"],
-            "--",
-            *expected_trees.keys(),
-        ],
-        cwd=REPO,
-        check=False,
-    ).returncode
-    validations.append(
-        check(
-            "protected_baseline_unchanged",
-            observed_trees == expected_trees and protected_diff == 0,
-            observed_trees,
-        )
-    )
+    from reproduction_support import validate_source_manifest, validate_reproduction_file
+    validate_source_manifest(REPO)
+    for relative, expected in config["input_hashes"].items():
+        validate_reproduction_file((ROOT / relative).resolve(), expected, REPO)
+    validations.append(check("public_source_integrity", True, "SOURCE_MANIFEST.sha256"))
 
     expected_counts = metadata["outcome_row_counts"]
     observed_counts = {
