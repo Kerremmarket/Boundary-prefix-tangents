@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "frozen_before_new_outcomes": true,
+  "base_commit": "8671f64947b8afb46a86924748a48411bcde632f",
+  "source_cliquet_commit": "924f653c5a5ab6a09b738a46be8e2040455f49fb",
+  "source_integration_commit": "8671f64947b8afb46a86924748a48411bcde632f",
+  "snapshot_dates": [
+    "2016-10-31",
+    "2008-11-28",
+    "2020-02-28",
+    "2009-04-30",
+    "2006-03-31"
+  ],
+  "models": ["black_scholes_atm", "annual_lognormal_mixture"],
+  "contracts": [
+    {"id": "c06_g18_n6", "local_cap": 0.06, "global_cap": 0.18, "resets": 6},
+    {"id": "c08_g24_n8", "local_cap": 0.08, "global_cap": 0.24, "resets": 8},
+    {"id": "c10_g30_n10", "local_cap": 0.10, "global_cap": 0.30, "resets": 10}
+  ],
+  "transfer_homotopy_etas": [1.0, 0.5, 0.25, 0.125, 0.0625],
+  "mechanism_etas": [0.125, 0.0625, 0.03125, 0.015625, 0.0078125, 0.00390625],
+  "directions": [
+    "all_up",
+    "all_down",
+    "ramp_up",
+    "ramp_down",
+    "alternating_up_down",
+    "all_signed_singletons"
+  ],
+  "numerics": {
+    "primary_intervals_per_local_cap": 4096,
+    "fine_intervals_per_local_cap": 8192,
+    "quadrature_nodes_per_component": 256,
+    "warning_intervals_per_local_cap": 16384,
+    "warning_quadrature_nodes_per_component": 512,
+    "absolute_floor_minimum": 1e-11,
+    "resolution_multiplier": 10.0,
+    "root_absolute_tolerance": 1e-14,
+    "atom_collision_tolerance": 1e-8,
+    "sign_tolerance": 5e-13,
+    "identity_tolerance": 5e-12,
+    "wall_clock_minutes": 45,
+    "working_memory_gib": 3
+  },
+  "comparative_statics": {
+    "base_local_cap": 0.08,
+    "base_global_cap": 0.24,
+    "base_resets": 8,
+    "horizon_resets": [6, 8, 10],
+    "local_caps_at_fixed_global_cap": [0.06, 0.08, 0.12],
+    "global_caps_at_fixed_local_cap": [0.16, 0.24, 0.32],
+    "volatility_multipliers": [0.75, 1.0, 1.25],
+    "relative_displacement": 0.0078125,
+    "horizon_fixed_displacement": 0.000625,
+    "horizon_reference_exercise_dates": 7,
+    "signs": [-1.0, 1.0]
+  },
+  "frozen_materiality_gate": {
+    "base_median_transfer_bps_min": 1.0,
+    "absolute_prefix_change_bps_min": 0.5,
+    "material_base_cases_min": 3
+  },
+  "run_regression": false
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "frozen_before_corrected_calculations": true,
+  "manuscript_base_commit": "1c658a49f5ac5145eac9ae738b0ac548fa9d5d70",
+  "cliquet_source_commit": "924f653c5a5ab6a09b738a46be8e2040455f49fb",
+  "cliquet_outcome_code_commit": "faeee5e7259bcf0e54438d3371b3f02737ddb584",
+  "source_package_tree": "59dcf1adc38c59128ce1f2fc597c912cebe1a1a3",
+  "base_contract_id": "c08_g24_n8",
+  "uncapped_state_audit": {
+    "mechanism_rows": "all_1140_base_contract_rows",
+    "intervals_per_local_cap": 8192,
+    "quadrature_gate_rows": "frozen_40_rows",
+    "quadrature_nodes_per_component": 256
+  },
+  "warning_case": {
+    "date": "2006-03-31",
+    "contract_id": "c10_g30_n10",
+    "reference_model": "annual_lognormal_mixture",
+    "transferred_from_model": "black_scholes_atm"
+  },
+  "refinement_levels": [
+    {
+      "name": "R1",
+      "intervals_per_local_cap": 16384,
+      "quadrature_nodes_per_component": 512,
+      "conditional": false
+    },
+    {
+      "name": "R2",
+      "intervals_per_local_cap": 32768,
+      "quadrature_nodes_per_component": 1024,
+      "conditional": "run only if R1 cross-evaluator difference exceeds 2e-6"
+    }
+  ],
+  "unchanged_tolerances": {
+    "value_reconciliation_absolute": 0.000002,
+    "absolute_floor_minimum": 1e-11,
+    "floor_multiplier": 10.0,
+    "wall_clock_minutes": 30,
+    "working_memory_gib": 2
+  }
+}

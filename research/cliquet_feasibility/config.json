@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "frozen_before_outcomes": true,
+  "base_commit": "1c658a49f5ac5145eac9ae738b0ac548fa9d5d70",
+  "input_hashes": {
+    "inputs/market_snapshots.csv": "6883f3d44877a78a83e63736007ca3a63121c0c6538ead67d3279f47c9c85540",
+    "inputs/mixture_calibrations.csv": "a724dce29676a4c889c2297caad751babe854cb8cf3cdfa48e0994399cd6cce9",
+    "../financial_extension/evidence/full_market_panel/annual_calibrations.csv": "b06dd5f6c3f5bd288ffa48754bd4a5a281837a390644b1c1c398a01a7aa2adda"
+  },
+  "snapshot_dates": [
+    "2016-10-31",
+    "2008-11-28",
+    "2020-02-28",
+    "2009-04-30",
+    "2006-03-31"
+  ],
+  "models": [
+    "black_scholes_atm",
+    "annual_lognormal_mixture"
+  ],
+  "reset_period_years": 1.0,
+  "participation": 1.0,
+  "contracts": [
+    {"id": "c06_g18_n6", "local_cap": 0.06, "global_cap": 0.18, "resets": 6},
+    {"id": "c08_g24_n8", "local_cap": 0.08, "global_cap": 0.24, "resets": 8},
+    {"id": "c10_g30_n10", "local_cap": 0.10, "global_cap": 0.30, "resets": 10}
+  ],
+  "etas": [0.125, 0.0625, 0.03125, 0.015625, 0.0078125, 0.00390625],
+  "multidate_directions": [
+    "all_up",
+    "all_down",
+    "ramp_up",
+    "ramp_down",
+    "alternating_up_down"
+  ],
+  "single_date_signs": [-1.0, 1.0],
+  "numerics": {
+    "root_absolute_tolerance": 1e-14,
+    "levels": [
+      {"name": "coarse", "intervals_per_local_cap": 2048, "quadrature_nodes_per_component": 64},
+      {"name": "primary", "intervals_per_local_cap": 4096, "quadrature_nodes_per_component": 128},
+      {"name": "fine", "intervals_per_local_cap": 8192, "quadrature_nodes_per_component": 256}
+    ],
+    "sentinel": {
+      "date": "2016-10-31",
+      "contract_id": "c08_g24_n8",
+      "intervals_per_local_cap": 16384,
+      "quadrature_nodes_per_component": 512
+    },
+    "atom_collision_tolerance": 1e-8,
+    "positive_density_tolerance": 1e-8,
+    "value_reconciliation_absolute_tolerance": 2e-6,
+    "boundary_grid_widths_tolerance": 2.0,
+    "component_reconciliation_absolute_tolerance": 1e-9,
+    "absolute_floor_minimum": 1e-11,
+    "floor_multiplier": 10.0,
+    "wall_clock_minutes": 30,
+    "working_memory_gib": 2
+  },
+  "gates": {
+    "occupancy_min_snapshots_of_five": 4,
+    "mechanism_median_relative_error_max": 0.05,
+    "mechanism_prefix_closer_share_min": 0.8,
+    "adopt_median_transfer_bps_min": 1.0,
+    "adopt_prefix_change_bps_min": 0.5,
+    "adopt_material_base_cases_min": 3,
+    "adopt_full_approx_relative_error_max": 0.25,
+    "reject_all_transfer_bps_below": 0.1
+  },
+  "illustrative_notional_usd": 1000000.0,
+  "monte_carlo": {"enabled": false, "reason": "deterministic pilot"}
+}
