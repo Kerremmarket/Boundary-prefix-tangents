@@ -104,6 +104,7 @@ def prefix() -> None:
     for p in (ROOT / PREFIX / "figures").glob("*.pdf"):
         shutil.copy2(p, figures/p.name)
     run(f"{PREFIX}/src/validate_outputs.py", paths=paths)
+    run("scripts/reconcile_quadrature.py")
     register_outputs("prefix", PREFIX)
 
 

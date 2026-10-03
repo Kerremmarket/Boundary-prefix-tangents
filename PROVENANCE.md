@@ -26,3 +26,5 @@ Historical methodological protocols are included for transparency. One author-ma
 ## Validation scope
 
 See `VALIDATION.md` for the checks performed on this public export. A successful synthetic test run is not a full reproduction of the financial experiments, and a new WRDS download is not guaranteed to be byte-identical to the original vendor snapshot.
+
+The additional `scripts/reconcile_quadrature.py` comes from the subsequent manuscript verification pass. It makes the refined-warning-case substitution and percentage denominators explicit and audits the 30-row disposition using decimal arithmetic. It does not alter the underlying evaluators or the original resolution rule.
